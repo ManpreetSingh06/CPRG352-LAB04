@@ -1,4 +1,3 @@
-
 package models;
 
 import java.io.Serializable;
@@ -7,13 +6,14 @@ import java.io.Serializable;
  *
  * @author Manpreet Singh
  */
-public class Note{
+public class Note implements Serializable {
+
     private String title;
     private String content;
 
     public Note() {
-        title="";
-        content="";
+        title = "";
+        content = "";
     }
 
     public Note(String title, String content) {
@@ -36,7 +36,5 @@ public class Note{
     public void setContent(String content) {
         this.content = content;
     }
-    
-    
-    
+
 }

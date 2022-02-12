@@ -22,8 +22,8 @@ public class NoteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String web="/WEB-INF/";
-        final String text_file = getServletContext().getRealPath(web+"note.txt");
+        String web = "/WEB-INF/";
+        final String text_file = getServletContext().getRealPath(web + "note.txt");
 
         BufferedReader text = new BufferedReader(new FileReader(new File(text_file)));
 
@@ -37,10 +37,10 @@ public class NoteServlet extends HttpServlet {
         String edit_btn = request.getParameter("edit");
 
         if (edit_btn == null) {
-            getServletContext().getRequestDispatcher(web+"viewnote.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher(web + "viewnote.jsp").forward(request, response);
             return;
         } else {
-            getServletContext().getRequestDispatcher(web+"editnote.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher(web + "editnote.jsp").forward(request, response);
             return;
         }
 
@@ -58,7 +58,7 @@ public class NoteServlet extends HttpServlet {
         writer.println(ed_title);
         writer.println(ed_content);
         writer.close();
-        
+
         Note ed_note = new Note(ed_title, ed_content);
         request.setAttribute("notes", ed_note);
         getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
